@@ -46,9 +46,9 @@ body {
 }
 
 .title {
+    font-family: 'Russo One', sans-serif;
     position: relative;
     font-size: 56px;
-    font-weight: 700;
     letter-spacing: 6px;
     line-height: 1;
     display: flex;
@@ -100,8 +100,7 @@ body {
     background-color: rgb(0, 0, 0);
     z-index: 5;
     text-align: center;
-    display: block;
-    visibility: visible;
+    display: none;
 }
 
 .block_sorry .text {
@@ -114,9 +113,12 @@ body {
     font-size: 48px;
 }
 
-@media screen and (min-width: 600px) {
+@media (max-width: 600px) {
     .block_sorry {
-        display: none;
+        display: block;
+    }
+    body {
+        overflow: hidden;
     }
 }
 
@@ -163,6 +165,7 @@ header .info {
     position: relative;
     left: -120px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
     transition: all 0.5s;
 }
 
@@ -230,7 +233,6 @@ main {
     backdrop-filter: blur(8px);
     display: inline-flex;
     flex-wrap: wrap;
-    justify-content: center;
     width: 80vw;
     border-radius: 20px;
     position: relative;
@@ -274,6 +276,7 @@ main .other_info .right_column, .left_column {
     display: inline-flex;
     flex-direction: column;
     position: relative;
+    justify-content: center;
     width: 40%;
 }
 
@@ -318,10 +321,15 @@ main .other_info .right_column, .left_column {
 }
 
 .right_column img {
-    max-width: 100%;
-    min-height: 100%;
+    width: 100%;
     border-radius: 20px;
     border: 1px solid;
+    transition: all 0.2s;
+}
+
+.right_column .column img:hover {
+    border: 2px solid;
+    transition: all 0.2s;
 }
 
 .skills {
@@ -340,7 +348,7 @@ main .other_info .right_column, .left_column {
     color: white;
     text-align: center;
     width: 22vw;
-    height: 22vw;
+    height: 20vw;
     margin-bottom: 3vw;
     border-radius: 40px;
     box-shadow: 8px 8px 16px black;
@@ -349,7 +357,7 @@ main .other_info .right_column, .left_column {
 
 .skills .element:hover {
     width: 23vw;
-    height: 23vw;
+    height: 21vw;
     margin-bottom: 2vw;
     border-radius: 30px;
     box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
@@ -359,7 +367,7 @@ main .other_info .right_column, .left_column {
 
 .skills .element p {
     padding: 10%;
-    font-size: 30px;
+    font-size: 3vw;
 }
 
 .slide_title::before {
@@ -368,14 +376,13 @@ main .other_info .right_column, .left_column {
 
 .slide_block {
     text-align: center;
+    width: 100%;
 }
 
 .slide_block .box {
     position: relative;
     display: inline-flex;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    height: 70vh;
+    height: 50vh;
     width: 70vw;
 }
 
@@ -393,26 +400,30 @@ main .other_info .right_column, .left_column {
 }
 
 .slide_block .box .visible_zone .content .element {
-    padding: 100px;
+    padding: 2% 5%;
     width: 70vw;
+    top: 50%;
+    transform: translateY(-50%);
+    height: fit-content;
     color: aliceblue;
     position: relative;
+    
 }
 
-.slide_block .box .visible_zone .content .element::before {
+.slide_block .box .visible_zone .content .element::after {
     content: '';
-    width: 90%;
-    height: 90%;
-    background-color: rgb(189, 20, 20);
-    box-shadow: 8px 8px 16px black;
     position: absolute;
-    z-index: -1;
-    top: 50%;
+    top: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    z-index: -1;
+    display: block;
+    height: 100%;
+    width: 90%;
+    background-color: rgb(189, 20, 20);
+    box-shadow: inset 8px 8px 16px black;
     border-radius: 20px;
 }
-
 
 .slide_block .box button {
     position: absolute;
@@ -463,6 +474,7 @@ main .other_info .right_column, .left_column {
     height: 16px;
     background-color: black;
     box-shadow: inset -3px -3px 5px black;
+    cursor: pointer;
     transition: all 0.2s;
 }
 
@@ -472,6 +484,16 @@ footer {
     position: relative;
     top: -100px;
     height: 30vh;
+    pointer-events: none;
+}
+
+footer .up {
+    height: 64px;
+    width: 64px;
+    position: absolute;
+    right: 10%;
+    bottom: 128px;
+    pointer-events: all;
 }
 
 footer p {

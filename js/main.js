@@ -82,10 +82,15 @@ const app = Vue.createApp ({
                 else
                     this.currentElement = 3
             }
-            /* Да, код в свиче страшный и костыльный, зато работает :) */
-            switch (this.currentElement) {
+            this.activeDot(this.currentElement)
+            
+        },
+        activeDot(element) {
+            /* Да, код страшный и костыльный, зато работает :) */
+            switch (Number(element)) {
                 case 1:
                     this.contentStyle = {left: '0', transition: 'all 1s'}
+
                     this.dotStyle1 = {
                         width: '32px',
                         height: '32px',
@@ -107,6 +112,7 @@ const app = Vue.createApp ({
                     break;
                 case 2:
                     this.contentStyle = {left: '-70vw', transition: 'all 1s'}
+
                     this.dotStyle2 = {
                         width: '32px',
                         height: '32px',
@@ -128,6 +134,7 @@ const app = Vue.createApp ({
                     break;
                 case 3:
                     this.contentStyle = {left: '-140vw', transition: 'all 1s'}
+
                     this.dotStyle3 = {
                         width: '32px',
                         height: '32px',
@@ -148,6 +155,9 @@ const app = Vue.createApp ({
                     }
                     break;
             }
+        },
+        scrollUp() {
+            window.scrollTo(0, 0)
         }
     },
 })

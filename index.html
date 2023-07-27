@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,15 +139,16 @@
                 </div>
                 <button class="right" @click="moveContent('right')" :style="btnStyleR"></button>
                 <ul class="dots">
-                    <li :style="dotStyle1"></li>
-                    <li :style="dotStyle2"></li>
-                    <li :style="dotStyle3"></li>
+                    <li :style="dotStyle1" @click="activeDot('1')"></li>
+                    <li :style="dotStyle2" @click="activeDot('2')"></li>
+                    <li :style="dotStyle3" @click="activeDot('3')"></li>
                 </ul>
             </div>
         </div>
     </main>
 
     <footer>
+        <button class="up" @click="scrollUp">наверх</button>
         <p>Не ну если Вы дошли досюда, то просто обязаны взять меня в свой отдел :)</p>
         <div class="end_line"></div>
     </footer>
