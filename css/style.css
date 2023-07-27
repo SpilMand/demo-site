@@ -17,6 +17,7 @@ nav,footer,header,aside{display: block;}
 html,body{
 	height: 100%;
 	width: 100%;
+    cursor: default;
 	font-size: 100%;
 	line-height: 1.5;
     font-family: 'EB Garamond', serif;
@@ -228,6 +229,22 @@ header .info .text {
     margin: 0 40px;
 }
 
+.timer_block {
+    color: rgba(240, 248, 255, 0.1);
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 2px 2px 2px black;
+    position: fixed;
+    z-index: 10;
+    top: 5%;
+    right: 5%;
+    transition: all 0.5s;
+}
+
+.timer_block:hover {
+    color: rgba(240, 248, 255, 1);
+    transition: all 0.5s;
+}
+
 main {
     background-color: rgba(240, 248, 255, 0.4);
     backdrop-filter: blur(8px);
@@ -289,7 +306,7 @@ main .other_info .right_column, .left_column {
 .right_column .column .image:before {
     content: "";
     background-size: 100% 100%;
-    filter: blur(20px);
+    filter: blur(30px);
     border-radius: 40px;
     position: absolute;
     left: -10px;
@@ -362,6 +379,7 @@ main .other_info .right_column, .left_column {
     border-radius: 30px;
     box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.5);
     background-color: rgb(189, 20, 20);
+    text-shadow: 3px 3px 2px black;
     transition: all 1s;
 }
 
@@ -485,15 +503,6 @@ footer {
     top: -100px;
     height: 30vh;
     pointer-events: none;
-}
-
-footer .up {
-    height: 64px;
-    width: 64px;
-    position: absolute;
-    right: 10%;
-    bottom: 128px;
-    pointer-events: all;
 }
 
 footer p {

@@ -28,7 +28,13 @@ const app = Vue.createApp ({
                 backgroundColor: 'rgb(189, 20, 20)',
             },
             dotStyle2: {},
-            dotStyle3: {}
+            dotStyle3: {},
+
+            //timer
+            days: '00',
+            hours: '00',
+            minutes: '00',
+            seconds: '00'
         }
     },
     methods: {
@@ -156,10 +162,22 @@ const app = Vue.createApp ({
                     break;
             }
         },
-        scrollUp() {
-            window.scrollTo(0, 0)
-        }
     },
+    mounted() {
+        targetDate = new Date('1 September 2023');
+        setInterval(() => {
+            curDate = new Date();
+            difference = targetDate - curDate;
+            seconds = Math.floor(difference / 1000);
+            minutes = Math.floor(seconds / 60);
+            hours = Math.floor(minutes / 60);
+            this.days = Math.floor(hours / 24);
+
+            this.hours = String(hours % 24).padStart(2, 0);
+            this.minutes = String(minutes % 60).padStart(2, 0);
+            this.seconds = String(seconds % 60).padStart(2, 0);
+        }, 1000);
+    }
 })
 
 const mountedApp = app.mount('#app')
