@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Резюме</title>
+</head>
+<body>
+<div id="app">
+    
+    <div class="black_view" :style="blackStyles" @click="setDisplay">
+        <!-- Появляется при просмотре изображений -->
+        <transition name="fade">
+            <div class="image" v-show="isShowing">
+                <img :src="viewImage" alt="">
+            </div>
+        </transition>
+    </div>
+    
+    <div class="block_sorry">
+        <div class="text">
+            Эта версия сайта ещё не готова, вернитесь позже
+        </div>
+    </div>
+
+    <header>
+        <div class="info" :style="infoStyle" @click="getLinks">
+            <div class="links">
+                <a href="https://vk.com/sem.prohor" target="_blank" class="btn vk"></a>
+                <a href="https://t.me/SpilMand" target="_blank" class="btn tg"></a>
+                <a href="https://wa.me/79372178972" target="_blank" class="btn wa"></a>
+            </div>
+            <div class="image">
+                <img src="./img/photo.jpg" alt="">
+            </div>
+
+            <div class="text">
+                <div class="name">Прохорычев Семён</div>
+                <div class="profession">Junior Front-End developer</div>
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="title info_title">
+            Основная информация
+        </div>
+        <div class="other_info">
+            <div class="left_column">
+                <p>Сделал этот сайт за несколько дней для демонстрации,
+                    что я не совсем оладушек и какие-то навыки имеются)</p>
+                <p>Я конечно далек от дизайна, поэтому в плане визуала
+                    данная страница может выглядеть несуразно, но вроде
+                    смотрится неплохо</p>
+                <p>Как я уже говорил: хочу развиваться в качестве программиста.
+                    Имею опыт работы в Синергии, уже почти год. Прохожу курсы,
+                    справа расположены различные картинки, среди них даже есть
+                    один сертификат)
+                </p>
+            </div>
+    
+            <div class="right_column">
+                <div class="column column_1">
+                    <div class="image image1" @click="setDisplay('./img/certificate.jpeg')">
+                        <img :src="image1" alt="">
+                    </div>
+                    <div class="image image2" @click="setDisplay('./img/shura.jpg')">
+                        <img :src="image2" alt="">
+                    </div>
+                </div>
+                
+                <div class="column column_2">
+                    <div class="image image3" @click="setDisplay('./img/dog.jpg')">
+                        <img :src="image3" alt="">
+                    </div>
+                    <div class="image image4" @click="setDisplay('./img/lipa.jpg')">
+                        <img :src="image4" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="title skills_title">Навыки</div>
+        <div class="skills">
+            <div class="element">
+                <p>Навыки верстки HTML/CSS</p>
+            </div>
+            <div class="element">
+                <p>Знание JavaScript</p>
+            </div>
+            <div class="element">
+                <p>Библиотека Vue.js</p>
+            </div>
+            <div class="element">
+                <p>Препроцессор SASS/SCSS</p>
+            </div>
+            <div class="element">
+                <p>Умение гуглить</p>
+            </div>
+            <div class="element">
+                <p>Знание MySQL</p>
+            </div>
+        </div>
+
+        <div class="title slide_title">Анекдоты</div>
+        <div class="slide_block">
+            <div class="box">
+                <button class="left" @click="moveContent('left')" :style="btnStyleL"></button>
+                <div class="visible_zone">
+                    <div class="content" :style="contentStyle">
+                        <div class="element">
+                            Когда я был ребенком, отец строго-настрого запретил
+                            мне открывать дверь подвала. Но однажды детское
+                            любопытство пересилило. Я открыл дверь и увидел
+                            вещи, которых никогда раньше не видел: траву,
+                            деревья, небо, солнце...
+                        </div>
+                        <div class="element">
+                            Работа программиста и шамана имеет много общего
+                            — оба бормочут непонятные слова, совершают непонятные
+                            действия и не могут объяснить, как оно работает.
+                        </div>
+                        <div class="element">
+                            Решили американцы напасть на Россию. Обратились
+                            к партнёрам в Европе: "Когда лучше напасть?"
+                            Французы говорят: "В любое время года, только не зимой."
+                            Немцы говорят: "В любое время года, только не летом."
+                            Решили американцы спросить еще и у Китая, а китайцы
+                            и говорят: "Не тяните, нападайте сейчас. В России
+                            сейчас космодром новый строится, им пленные очень нужны."
+                        </div>
+                    </div>
+                </div>
+                <button class="right" @click="moveContent('right')" :style="btnStyleR"></button>
+                <ul class="dots">
+                    <li :style="dotStyle1"></li>
+                    <li :style="dotStyle2"></li>
+                    <li :style="dotStyle3"></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Не ну если Вы дошли досюда, то просто обязаны взять меня в свой отдел :)</p>
+        <div class="end_line"></div>
+    </footer>
+
+</div>
+    <script src="js/main.js"></script>
+</body>
+</html>
