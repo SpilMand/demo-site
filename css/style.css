@@ -346,7 +346,7 @@ main .other_info .right_column, .left_column {
 }
 
 .right_column .column img:hover {
-    border: 2px solid;
+    box-shadow: 0 0 10px white;
     transition: all 0.2s;
 }
 
