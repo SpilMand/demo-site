@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -14,12 +14,9 @@
 <body>
 <div id="app">
     <div class="black_view" :style="blackStyles" @click="setDisplay">
-        <!-- Появляется при просмотре изображений -->
-        <transition name="fade">
-            <div class="image" v-show="isShowing">
-                <img :src="viewImage" alt="">
-            </div>
-        </transition>
+        <div class="image">
+            <img :src="viewImage" id="img" alt="">
+        </div>
     </div>
     
     <div class="timer_block">
@@ -77,19 +74,19 @@
     
             <div class="right_column">
                 <div class="column column_1">
-                    <div class="image image1" @click="setDisplay('./img/certificate.jpeg')">
+                    <div class="image image1" @click="setDisplay(1)">
                         <img :src="image1" alt="">
                     </div>
-                    <div class="image image2" @click="setDisplay('./img/shura.jpg')">
+                    <div class="image image2" @click="setDisplay(2)">
                         <img :src="image2" alt="">
                     </div>
                 </div>
                 
                 <div class="column column_2">
-                    <div class="image image3" @click="setDisplay('./img/dog.jpg')">
+                    <div class="image image3" @click="setDisplay(3)">
                         <img :src="image3" alt="">
                     </div>
-                    <div class="image image4" @click="setDisplay('./img/lipa.jpg')">
+                    <div class="image image4" @click="setDisplay(4)">
                         <img :src="image4" alt="">
                     </div>
                 </div>
@@ -97,72 +94,23 @@
         </div>
 
         <div class="title skills_title">Навыки</div>
-        <div class="skills">
-            <div class="element">
-                <p>Навыки верстки HTML/CSS</p>
-            </div>
-            <div class="element">
-                <p>Знание JavaScript</p>
-            </div>
-            <div class="element">
-                <p>Библиотека Vue.js</p>
-            </div>
-            <div class="element">
-                <p>Препроцессор SASS/SCSS</p>
-            </div>
-            <div class="element">
-                <p>Умение гуглить</p>
-            </div>
-            <div class="element">
-                <p>Просто хороший человек</p>
-            </div>
-        </div>
+        <block-list class="skills"></block-list>
 
         <div class="title slide_title">Анекдоты</div>
-        <div class="slide_block">
-            <div class="box">
-                <button class="left" @click="moveContent('left')" :style="btnStyleL"></button>
-                <div class="visible_zone">
-                    <div class="content" :style="contentStyle">
-                        <div class="element">
-                            Когда я был ребенком, отец строго-настрого запретил
-                            мне открывать дверь подвала. Но однажды детское
-                            любопытство пересилило. Я открыл дверь и увидел
-                            вещи, которых никогда раньше не видел: траву,
-                            деревья, небо, солнце...
-                        </div>
-                        <div class="element">
-                            Работа программиста и шамана имеет много общего
-                            — оба бормочут непонятные слова, совершают непонятные
-                            действия и не могут объяснить, как оно работает.
-                        </div>
-                        <div class="element">
-                            Решили американцы напасть на Россию. Обратились
-                            к партнёрам в Европе: "Когда лучше напасть?"
-                            Французы говорят: "В любое время года, только не зимой."
-                            Немцы говорят: "В любое время года, только не летом."
-                            Решили американцы спросить еще и у Китая, а китайцы
-                            и говорят: "Не тяните, нападайте сейчас. В России
-                            сейчас космодром новый строится, им пленные очень нужны."
-                        </div>
-                    </div>
-                </div>
-                <button class="right" @click="moveContent('right')" :style="btnStyleR"></button>
-                <ul class="dots">
-                    <li :style="dotStyle1" @click="activeDot('1')"></li>
-                    <li :style="dotStyle2" @click="activeDot('2')"></li>
-                    <li :style="dotStyle3" @click="activeDot('3')"></li>
-                </ul>
-            </div>
-        </div>
+        <slider-box></slider-box>
+        
     </main>
 
     <footer>
-        <p>Не ну если Вы дошли досюда, то просто обязаны взять меня в свой отдел :)</p>
+        <div class="button_up" @click="moveUp(80)">⇧ Вернуться наверх</div>
         <div class="end_line"></div>
     </footer>
 
 </div>
+
+    <script src="js/components/slider.js"></script>
+    <script src="js/components/blockList.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 </html>
